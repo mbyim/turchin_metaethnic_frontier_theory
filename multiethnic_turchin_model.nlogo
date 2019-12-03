@@ -108,7 +108,6 @@ end
 
 to update-asabiya
 ask turtles [
-  ;**TODO** is this condition correct?
   ;think so
   ifelse any? ( turtles-on neighbors4 ) with [ imperialindex = 0 or imperialindex != [imperialindex] of myself ]
   ;let tminusoneasabiya asabiya
@@ -159,13 +158,12 @@ to decide-attack
       [if ([regional-polity-power] of myself - regional-polity-power) > p-diff
         ;if im white, then set new color/imperialindex for myself AND the turtle i conquered
         [ifelse imperialindex = 0
-        ;**TODO** need to fix new_index and new_color
-        ;so that they a) do not overlap with existing (remove sublist from list?)
-        ;and b) change color so that its more than just the base-colors it can choose from?
+        ; new_index and new_color so that they a) do not overlap with existing (remove sublist from list?)
+        ; and b) change color so that its more than just the base-colors it can choose from?
           [let new_index (new-unused-index used-indexes)
-           let new_color (new-unused-color used-colors) ;base colors minus the list of used colors (remove-duplicates [color] of turtles)
-           ;trying to change *both* the defender and attacker's imperialindex and color to initialize a new polity/empire
-           ;don't think im doing it in an idiomatic way?
+           let new_color (new-unused-color used-colors)
+           ; trying to change *both* the defender and attacker's imperialindex
+           ; and color to initialize a new polity/empire don't think im doing it in an idiomatic way?
            ask myself [
               set imperialindex new_index
               set color new_color
@@ -209,14 +207,6 @@ to-report new-unused-color [used-color-lst]
       [ set newcol (list (random 256) (random 256) (random 256)) ]
   report newcol
 end
-
-;to graphing
-;  ask turtles [
-;  create-temporary-plot-pen (word imperialindex)
-;  set-plot-pen-color color
-;  plotxy imperial-asabiya ticks
-;  ]
-;end
 @#$#@#$#@
 GRAPHICS-WINDOW
 562
