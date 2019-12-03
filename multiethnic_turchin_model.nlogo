@@ -69,7 +69,7 @@ to setup
   ]
 
   ask turtles [
-    calculate-imperial-asabiya
+    calculate-imperial-asabiya ;should i reset imperial-asabiya when regions desintigrate?
     calculate-imperial-num-regions-controlled
     calculate-imperial-center
     calculate-turtle-power

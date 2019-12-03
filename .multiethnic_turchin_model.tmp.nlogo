@@ -69,7 +69,7 @@ to setup
   ]
 
   ask turtles [
-    calculate-imperial-asabiya
+    calculate-imperial-asabiya ;should i reset imperial-asabiya when regions desintigrate?
     calculate-imperial-num-regions-controlled
     calculate-imperial-center
     calculate-turtle-power
@@ -207,7 +207,6 @@ to-report new-unused-color [used-color-lst]
       [ set newcol (list (random 256) (random 256) (random 256)) ]
   report newcol
 end
-
 @#$#@#$#@
 GRAPHICS-WINDOW
 562
@@ -237,10 +236,10 @@ ticks
 30.0
 
 BUTTON
-24
-53
-97
-86
+33
+31
+106
+64
 NIL
 setup
 NIL
@@ -254,10 +253,10 @@ NIL
 1
 
 BUTTON
-116
-55
-179
-88
+119
+32
+182
+65
 NIL
 go
 T
@@ -271,10 +270,10 @@ NIL
 0
 
 PLOT
-22
-110
-527
-446
+19
+271
+553
+482
 Imperial Asabiya over Time Plot
 Time
 Imperial Asabiya
@@ -286,8 +285,26 @@ true
 false
 "" ""
 PENS
-"default" 1.0 0 -16777216 true "" "\n  let empires (remove-duplicates [imperialindex] of turtles)\n  foreach empires\n  [ x -> ask one-of turtles with [ imperialindex = x ] [\n  create-temporary-plot-pen (word imperialindex)\n  set-plot-pen-color color\n  plotxy ticks imperial-asabiya\n  ] ]"
+"default" 1.0 0 -16777216 true "" "\n  let empires (remove-duplicates [imperialindex] of turtles)\n  foreach empires\n  [ x -> ask one-of turtles with [ imperialindex = x ] [\n  create-temporary-plot-pen (word imperialindex)\n  set-plot-pen-color color\n  plotxy ticks imperial-asabiya\n  ] ]\n    set-plot-x-range (ticks - 100) ticks"
 "s-crit" 1.0 0 -7500403 true "set-plot-pen-color 16" "plot s-crit"
+
+PLOT
+19
+71
+554
+263
+Num Regional Polities (Patches) Per Empire
+NIL
+NIL
+0.0
+10.0
+0.0
+10.0
+true
+false
+"" ""
+PENS
+"default" 1.0 0 -16777216 true "" "\n  let empires (remove-duplicates [imperialindex] of turtles)\n  foreach empires\n  [ x -> ask one-of turtles with [ imperialindex = x ] [\n  create-temporary-plot-pen (word imperialindex)\n  set-plot-pen-color color\n  plotxy ticks imperial-region-count\n  ] ]\n    set-plot-x-range (ticks - 100) ticks"
 
 @#$#@#$#@
 ## WHAT IS IT?
