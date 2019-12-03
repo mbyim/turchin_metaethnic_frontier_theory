@@ -158,7 +158,7 @@ to decide-attack
         ;so that they a) do not overlap with existing (remove sublist from list?)
         ;and b) change color so that its more than just the base-colors it can choose from?
           [  let new_index (new-unused-index used-indexes)
-           let new_color (random 141) ;base colors minus the list of used colors (remove-duplicates [color] of turtles)
+           let new_color (new-unused-color used-colors) ;base colors minus the list of used colors (remove-duplicates [color] of turtles)
            ;trying to change *both* the defender and attacker's imperialindex and color to initialize a new polity/empire
            ;don't think im doing it in an idiomatic way?
            ask myself [
@@ -195,6 +195,13 @@ to-report new-unused-index [used-index-lst]
       [ set newval (random 10000) ]
   report newval
 end
+
+to-report new-unused-color [used-color-lst]
+  let newcol (list (random 256) (random 256) (random 256))
+  while [ member? newcol used-color-lst or newcol = (list 255 255 255) ]
+      [ set newcol (list (random 256) (random 256) (random 256)) ]
+  report newcol
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
@@ -210,8 +217,8 @@ GRAPHICS-WINDOW
 1
 1
 0
-1
-1
+0
+0
 1
 -16
 16
@@ -256,6 +263,24 @@ NIL
 NIL
 NIL
 0
+
+PLOT
+5
+106
+205
+256
+Imperial Asabiya vs Scrit Plot
+Time
+Imperial Asabiya
+0.0
+10.0
+0.0
+10.0
+true
+false
+"" ""
+PENS
+"default" 1.0 0 -16777216 true "" "plot count ( turtles with [ imperial-asabiya > s-crit ] )"
 
 @#$#@#$#@
 ## WHAT IS IT?
