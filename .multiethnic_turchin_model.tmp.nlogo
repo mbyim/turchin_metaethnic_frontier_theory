@@ -236,10 +236,10 @@ ticks
 30.0
 
 BUTTON
-33
-31
-106
-64
+22
+15
+95
+48
 NIL
 setup
 NIL
@@ -253,10 +253,10 @@ NIL
 1
 
 BUTTON
-119
-32
-182
-65
+113
+16
+176
+49
 NIL
 go
 T
@@ -270,10 +270,10 @@ NIL
 0
 
 PLOT
-19
-271
-553
-482
+22
+274
+537
+446
 Imperial Asabiya over Time Plot
 Time
 Imperial Asabiya
@@ -285,15 +285,15 @@ true
 false
 "" ""
 PENS
-"default" 1.0 0 -16777216 true "" "\n  let empires (remove-duplicates [imperialindex] of turtles)\n  foreach empires\n  [ x -> ask one-of turtles with [ imperialindex = x ] [\n  create-temporary-plot-pen (word imperialindex)\n  set-plot-pen-color color\n  plotxy ticks imperial-asabiya\n  ] ]\n    set-plot-x-range (ticks - 100) ticks"
+"default" 1.0 0 -16777216 true "" "\n  let empires (remove-duplicates [imperialindex] of turtles)\n  foreach empires\n  [ x -> ask one-of turtles with [ imperialindex = x ] [\n  create-temporary-plot-pen (word imperialindex)\n  set-plot-pen-color color\n  plotxy ticks imperial-asabiya\n  ] ]"
 "s-crit" 1.0 0 -7500403 true "set-plot-pen-color 16" "plot s-crit"
 
 PLOT
-19
+23
 71
-554
-263
-Num Regional Polities (Patches) Per Empire
+535
+261
+Num Polities (Patches) Per Empire
 NIL
 NIL
 0.0
@@ -304,7 +304,7 @@ true
 false
 "" ""
 PENS
-"default" 1.0 0 -16777216 true "" "\n  let empires (remove-duplicates [imperialindex] of turtles)\n  foreach empires\n  [ x -> ask one-of turtles with [ imperialindex = x ] [\n  create-temporary-plot-pen (word imperialindex)\n  set-plot-pen-color color\n  plotxy ticks imperial-region-count\n  ] ]\n    set-plot-x-range (ticks - 100) ticks"
+"default" 1.0 0 -16777216 true "" "plot count turtles"
 
 @#$#@#$#@
 ## WHAT IS IT?
